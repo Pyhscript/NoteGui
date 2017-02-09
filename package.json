@@ -1,0 +1,22 @@
+{
+  "name": "note-gui",
+  "version": "1.0.0",
+  "description": "GUI Application for Collaborative Notes",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/syncthetic/NoteGui",
+  "keywords": [
+    "Electron",
+    "notes",
+    "GUI",
+    "collaborative",
+    "atom"
+  ],
+  "author": "Syncthetic",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Handle API Stuff</title>
+  </head>
+  <body>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="./api.js"></script>
+    <script>if (window.module) module = window.module;</script>
+    <h1>API Testing</h1>
+    <p id="api-call"></p>
+    <p id='token'></p>
+    <button onclick="login();">Login</button>
+    <button onclick="register();">Register</button>
+    <button onclick="logout();">Logout</button>
+  </body>
+
+
+  <script>
+    const API = new APISync();
+
+    function login() {
+      API.login("admin", "mysecretpwd");
+    }
+
+    function register() {
+      API.register('foo', 'bar', 'bar', 'CTF-USER');
+    }
+
+    function logout() {
+      API.logout();
+    }
+  </script>
+</html>
