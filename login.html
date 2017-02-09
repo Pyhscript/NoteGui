@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="assests/css/style.min.css">
+  </head>
+  <body>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="assests/js/api.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
+    <form action="javascript:void(0);">
+      <h2><span class="entypo-login"></span>Login</h2>
+      <button class="submit" onclick="login();"><span class="entypo-lock"></span></button>
+      <span class="entypo-user inputUserIcon"></span>
+      <input type="text" class="user" id="username" placeholder="ursername"/>
+      <span class="entypo-key inputPassIcon"></span>
+      <input type="password" class="pass" id="password" placeholder="password"/>
+    </form>
+  </body>
+  <script>
+    const API = new APISync();
+
+    function login() {
+      user = document.getElementById('username').value;
+      pass = document.getElementById('password').value;
+      console.log(user + ' ' + pass);
+      API.login(user, pass);
+      //API.login("admin", "mysecretpwd");
+    }
+  </script>
+</html>

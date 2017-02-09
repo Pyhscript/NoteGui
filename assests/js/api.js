@@ -13,12 +13,11 @@ function APISync() {
       }
     }).done(function(msg) {
       if(msg.ec === 0) {
-        $('#api-call').html('API Returned: ' + msg.ec + ' #=> Successful');
-        $('#token').html('Token: ' + msg.token);
+        console.log('Login Successful: ' + msg.ec);
         parent.token = msg.token;
       }
       else {
-        $('#api-call').html('API Returned: ' + msg.ec + ' #=> Failed');
+        console.log('Login Failed: ' + msg.ec);
       }
     });
   } // end login(user, pass);
@@ -37,10 +36,10 @@ function APISync() {
       }
     }).done(function(msg) {
       if (msg.ec === 0) {
-        $('#api-call').html('Registration Returned: ' + msg.ec + ' #=> Registration Successful');
+        console.log('Registration Successful: ' + msg.ec);
       }
       else {
-        $('#api-call').html('Registration Returned: ' + msg.ec + ' #=> Registration Failed.');
+        console.log('Registration Failed: ' + msg.ec);
       }
     });
   } // end register(user, pass, pass2, group)
@@ -55,9 +54,9 @@ function APISync() {
       }
     }).done(function(msg) {
       if(msg.ec === 0) {
-        $('#api-call').html('Logout Returned: ' + msg.ec + ' #=> Logout Successful');
+        console.log('Logout Successful: ' + msg.ec);
       } else {
-        $('#api-call').html('Logout Returned: ' + msg.ec + ' #=> Logout Failed');
+        console.log('Logout Failed: ' + msg.ec);
       }
     });
   } // end logout();
