@@ -4,7 +4,7 @@ function APISync() {
 
   this.login = function(user, pass, parent=this) {
     $.ajax({
-      url:      this.server + '/login',
+      url:      parent.server + '/login',
       method:   "POST",
       dataType: "JSON",
       data: {
