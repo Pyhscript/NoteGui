@@ -1,0 +1,153 @@
+$grp-gray:       #BFC0C0;
+$grp-gray-dark:  #232323;
+$grp-blue-dark:  #2D3142;
+$grp-blue-med:   #547AA5;
+$grp-white:      #FFFFFF;
+$grp-orange:     #EF8354;
+$fontFamily: 'Lato', sans-serif;
+
+body {
+  background: #333333;
+}
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#app-window {
+  @extend .center;
+  width: 800px;
+  height: 800px;
+  background: #333333;
+}
+
+a {
+  color: $grp-blue-med;
+  transition: all .2s ease;
+  text-decoration: none;
+  &:hover {
+    color: $grp-white;
+  }
+}
+
+section {
+  width: 300px;
+  background-color: $grp-gray-dark;
+  padding: 4rem 2rem;
+  margin: 0 auto;
+  margin-top: 10vh;
+  border: solid 4px $grp-blue-med;
+  border-radius: 10%;
+
+  form {
+    width: 100%;
+  }
+
+  input {
+    background-color: $grp-blue-dark;
+    color: $grp-blue-med;
+    padding: .7rem .5rem;
+    margin: .3rem;
+    border: 0;
+    outline: none;
+    display: block;
+    width: 100%;
+    margin-bottom: .1rem;
+    box-sizing: border-box;
+    border-radius: 8px;
+  }
+
+  button {
+    background: $grp-blue-med;
+    color: $grp-blue-dark;
+    border: 0;
+    display: block;
+    width: 100%;
+    outline: none;
+    padding: .7rem .5rem;
+    margin-top: 2rem;
+    border-radius: 8px;
+    border: solid 2px transparent;
+    &:hover {
+      background-color: $grp-blue-dark;
+      color: $grp-blue-med;
+      border: solid 2px $grp-blue-med;
+    }
+  }
+
+  .login-logo {
+    text-align: center;
+    color: $grp-blue-med;
+  }
+
+  .login-header {
+    margin-bottom: 2rem;
+    h5 {
+      color: $grp-blue-med;
+      text-align: center;
+    }
+  }
+
+  .login-helper {
+    text-align: right;
+  }
+
+  ::-webkit-input-placeholder {
+    color:$grp-blue-med;
+  }
+
+  ::-moz-placeholder {
+    color:$grp-blue-med;
+  }
+
+  :-moz-placeholder {
+    color:$grp-blue-med;
+  }
+
+  :-ms-input-placeholder {
+    color:$grp-blue-med;
+  }
+
+  ::-webkit-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  ::-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  :-moz-placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  :-ms-input-placeholder {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  input:focus::-webkit-input-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  input:focus::-moz-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  input:focus:-moz-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  input:focus:-ms-input-placeholder {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+}

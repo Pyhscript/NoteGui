@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="assests/css/style.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="assests/js/api.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
+        <section class="login">
+          <div class="login-header">
+            <div class="login-logo">
+              <i class="fa fa-flag fa-3x"></i>
+            </div>
+            <h5>Time to break things...</h5>
+          </div>
+          <form class="login-form">
+            <input id="username" type="text" placeholder="Username"/>
+            <input id="password" type="password" placeholder="Password"/>
+            <div class="login-helper">
+              <a href="#">Forgot</a>
+            </div>
+            <button type="button" onclick="login();">Log in</button>
+            <button type="button">Register</button>
+          </form>
+        </section>
+
+  </body>
+  <script>
+    const API = new APISync();
+
+    function login() {
+      user = document.getElementById('username').value;
+      pass = document.getElementById('password').value;
+      console.log(user + ' ' + pass);
+      API.login(user, pass);
+      //API.login("admin", "mysecretpwd");
+    }
+  </script>
+</html>
