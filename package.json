@@ -1,11 +1,14 @@
 {
-  "name": "note-gui",
+  "name": "NoteGUI",
   "version": "1.0.0",
   "description": "GUI Application for Collaborative Notes",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . NoteGUI"
+    "build-linux":  "electron-packager . NoteGUI --platform=linux --arch=all --asar",
+    "build-mac": "electron-packager . NoteGUI --platform=darwin --arch=all --icon=assets/icons/icon.png.icns --asar",
+    "build-win": "electron-packager . NoteGUI --platform=win32 --arch=all --icon=assets/icons/icon.png.ico --asar",
+    "build": "npm run build-linux && npm run build-mac && npm run build-win"
   },
   "repository": "https://github.com/syncthetic/NoteGui",
   "keywords": [
