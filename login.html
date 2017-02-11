@@ -11,6 +11,8 @@
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="assests/js/api.js"></script>
+    <script src="assests/js/functions.js"></script>
+    <script src="assests/js/cookies.js"></script>
     <script>if (window.module) module = window.module;</script>
 
         <section class="login">
@@ -27,20 +29,26 @@
               <a href="#">Forgot</a>
             </div>
             <button type="button" onclick="login();">Log in</button>
-            <button type="button">Register</button>
+            <a href="register.html"><button type="button">Register</button></a>
           </form>
         </section>
-
   </body>
   <script>
     const API = new APISync();
+    const JAR = new CookieJar();
 
     function login() {
       user = document.getElementById('username').value;
       pass = document.getElementById('password').value;
       console.log(user + ' ' + pass);
       API.login(user, pass);
+      const cookie = {url: 'http://www.github.com', name: 'dummy_name', value: 'dummy'}
       //API.login("admin", "mysecretpwd");
+    }
+
+    function showCookie() {
+      JAR.showCookies();
+      //alert(cookieJar[0]);
     }
   </script>
 </html>

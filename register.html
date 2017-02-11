@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="assests/css/style.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="assests/js/api.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
+        <section class="login">
+          <div class="login-header">
+            <div class="login-logo">
+              <i class="fa fa-flag fa-3x"></i>
+            </div>
+            <h5>Create an account (all fields required)</h5>
+            <h5 id="notice"></h5>
+          </div>
+          <form class="login-form">
+            <input id="username" type="text" placeholder="Username" required/>
+            <input id="password" type="password" placeholder="Password" required/>
+            <input id="password-confirm" type="password" placeholder="Password Confirm" required/>
+
+            <fieldset>
+              <legend>Account Group</legend>
+
+              <input id="r1" type="radio" name="grp" value="ADMIN" checked>
+              <label for="r1"><i></i>Admin</label>
+
+              <input id="r2" type="radio" name="grp" value="CTF-USER">
+              <label for="r2"><i></i>User</label>
+
+              <input id="r3" type="radio" name="grp" value="GUEST">
+                <label for="r3"><i></i>Guest</label>
+
+            </fieldset>
+
+
+            <button type="button" onclick="register();">Confirm Registration</button>
+            <a href="login.html"><button type="button">Login Instead</button></a>
+          </form>
+        </section>
+
+  </body>
+  <script>
+    const API = new APISync();
+
+    function register() {
+      user           = document.getElementById('username').value;
+      pass           = document.getElementById('password').value;
+      pass_confirm   = document.getElementById('password-confirm').value;
+      grp_len        = document.getElementsByName('grp').length;
+      var group;
+      for(var g = grp_len; g--;) {
+        gn = document.getElementsByName('grp')[g];
+        if(gn.checked) group = gn.value;
+      }
+      if(user && pass && pass_confirm && group) {
+        //console.log("Username: " + user + " Name: " + name + " Password: " + pass + " Password Confirm: " + pass_confirm + " Group: " + group);
+        const API = new APISync();
+        API.register(user, pass, pass_confirm, group);
+        $('#notice').html('Registration successful! <a href="login.html">Login now!</a>');
+      } else {
+        //console.log("All of the required information was not supplied!");
+        $('#notice').html('Please fill out all required fields and try again!');
+      }
+      //API.register(user, name, pass, pass-confirm, group);
+    }
+  </script>
+</html>

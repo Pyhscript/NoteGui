@@ -5,9 +5,13 @@ $grp-blue-med:   #547AA5;
 $grp-white:      #FFFFFF;
 $grp-orange:     #EF8354;
 $fontFamily: 'Lato', sans-serif;
+$radColor: #15b0ed;
+$speed: 0.15s;
+$size: 18px;
 
 body {
   background: #333333;
+  font-size: 1.5em;
 }
 
 .center {
@@ -15,13 +19,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-#app-window {
-  @extend .center;
-  width: 800px;
-  height: 800px;
-  background: #333333;
 }
 
 a {
@@ -34,7 +31,7 @@ a {
 }
 
 section {
-  width: 300px;
+  width: 500px;
   background-color: $grp-gray-dark;
   padding: 4rem 2rem;
   margin: 0 auto;
@@ -76,6 +73,16 @@ section {
       color: $grp-blue-med;
       border: solid 2px $grp-blue-med;
     }
+  }
+
+  select {
+    border: solid thin white;
+    background-color: $grp-blue-med;
+    border-radius: 2px;
+    width: 50%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 5px 0px 5px 75px;
   }
 
   .login-logo {
@@ -149,5 +156,173 @@ section {
   input:focus:-ms-input-placeholder {
     opacity: 0;
     transition: opacity 0.3s ease;
+  }
+}
+
+
+
+
+
+
+/* new stuffs */
+
+fieldset {
+
+  width: 60%;
+  margin: auto auto 30px;
+  padding: 1em 2em;
+  margin-top: 5px;
+  border-color: transparent;
+  border-radius: 8px;
+  background: $grp-blue-dark;//rgba(0,0,0,0.1);
+
+  legend {
+    margin-bottom: 5px;
+    color: $grp-blue-med;
+
+  }
+
+}
+
+input[type=radio] {
+
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+
+  + label {
+    font-size: 15px;
+    cursor: pointer;
+    text-indent: 2.2em;
+    line-height: 2em;
+    color: $grp-gray;//rgba(255,255,255,0.5);
+    display: block;
+    position: relative;
+    transition: $speed;
+
+    > i {
+
+      border-radius: $size;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: $size;
+      height: $size;
+      margin-top: -$size/2;
+
+      background: #050505;
+      box-shadow:
+        inset 1px 1px 1px rgba(0,0,0,0.08),
+        1px 1px 1px rgba(255,255,255,0.03);
+
+      &:after {
+
+        content: "";
+        position: absolute;
+        border-radius: $size*2;
+        background: #ccc;
+        background: rgba(255,255,255,0.7);
+        width: 100%;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        margin-left: -$size/2;
+        margin-top: -$size/2;
+        opacity: 0;
+        transform: scale(0.5);
+
+      }
+
+    }
+
+  }
+
+  &:hover {
+
+    + label {
+
+      color: rgba(255,255,255,1);
+
+      > i:after {
+
+        opacity: 1;
+
+      }
+    }
+  }
+
+  &:focus,
+  &:active {
+
+    + label {
+
+      color: rgba(255,255,255,1);
+
+      > i {
+
+        box-shadow: 0 0 1px lighten($radColor,50%), 0 0 2px lighten($radColor,30%), 0 0 5px $radColor;
+
+      }
+    }
+  }
+
+  &:checked + label {
+
+    color: $grp-blue-med;//rgba(255,255,255,1);
+
+    > i:after {
+
+      opacity: 1;
+      border-radius: $size*5;
+      background: $radColor;
+      transform: scale(0.8);
+      transition: all 0.2s cubic-bezier(0.555, -0.375, 0, 1.615);
+
+    }
+  }
+
+  &:focus:checked + label,
+  &:active:checked + label {
+
+    color: $grp-blue-med;
+
+  }
+
+}
+
+fieldset.inline {
+
+  input[type=radio] {
+
+    + label {
+
+      display: inline-block;
+      margin-right: 2em;
+
+    }
+  }
+}
+
+
+
+.lt-ie8 {
+
+  input[type=radio] {
+
+    position: static;
+    width: auto; height: auto; opacity:1;
+
+    + label {
+
+      display: inline-block;
+      text-indent: 0.3em;
+
+      > i {
+
+        display: none;
+
+      }
+    }
   }
 }
