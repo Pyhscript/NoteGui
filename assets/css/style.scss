@@ -8,9 +8,23 @@ $fontFamily: 'Lato', sans-serif;
 $radColor: #15b0ed;
 $speed: 0.15s;
 $size: 18px;
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+::-webkit-scrollbar {
+        background-color: $grp-blue-med;
+        width: .2em
+}
+
+::-webkit-scrollbar-thumb:window-inactive,
+::-webkit-scrollbar-thumb {
+        background: $grp-blue-dark;
+}
+
 
 body {
   background: #333333;
+  color: $grp-blue-med;
   font-size: 1.5em;
 }
 
@@ -30,12 +44,18 @@ a {
   }
 }
 
+#divider {
+  border: solid thin $grp-blue-med;
+  min-width: 80%;
+  max-width: 80%;
+  margin: auto;
+}
 section {
   width: 500px;
   background-color: $grp-gray-dark;
   padding: 4rem 2rem;
   margin: 0 auto;
-  margin-top: 10vh;
+  margin-top: 10px;
   border: solid 4px $grp-blue-med;
   border-radius: 10%;
 
@@ -162,10 +182,7 @@ section {
 
 
 
-
-
-/* new stuffs */
-
+// radio select stuff
 fieldset {
 
   width: 60%;
@@ -174,7 +191,7 @@ fieldset {
   margin-top: 5px;
   border-color: transparent;
   border-radius: 8px;
-  background: $grp-blue-dark;//rgba(0,0,0,0.1);
+  background: $grp-blue-dark;
 
   legend {
     margin-bottom: 5px;
@@ -196,7 +213,7 @@ input[type=radio] {
     cursor: pointer;
     text-indent: 2.2em;
     line-height: 2em;
-    color: $grp-gray;//rgba(255,255,255,0.5);
+    color: $grp-gray;
     display: block;
     position: relative;
     transition: $speed;
@@ -269,7 +286,7 @@ input[type=radio] {
 
   &:checked + label {
 
-    color: $grp-blue-med;//rgba(255,255,255,1);
+    color: $grp-blue-med;
 
     > i:after {
 
@@ -322,6 +339,90 @@ fieldset.inline {
 
         display: none;
 
+      }
+    }
+  }
+}
+
+
+
+
+
+// sidebar stuff
+
+sidebar-toggle {
+  margin-left: -240px;
+}
+.sidebar {
+  width: 25%;
+  height: 100%;
+  background: $grp-gray-dark;
+  position: absolute;
+  top: 0;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  z-index: 100;
+  #leftside-navigation {
+    ul, ul ul {
+      margin: -2px 0 0;
+      padding: 0;
+    }
+    ul {
+      li {
+        list-style-type: none;
+        border-bottom: 1px solid rgba(255,255,255,.05);
+        &.active {
+          & > a {
+            color: #1abc9c;
+          }
+          ul {
+            display: block;
+          }
+        }
+        a {
+          color: #aeb2b7;
+          text-decoration: none;
+          display: block;
+          padding: 18px 0 18px 25px;
+          font-size: .7em;
+          outline: 0;
+          -webkit-transition: all 200ms ease-in;
+          -moz-transition: all 200ms ease-in;
+          -o-transition: all 200ms ease-in;
+          -ms-transition: all 200ms ease-in;
+          transition: all 200ms ease-in;
+          &:hover {
+            color: $grp-blue-med;
+          }
+          span {
+            display: inline-block;
+          }
+          i {
+            width: 20px;
+            .fa-angle-left, .fa-angle-right {
+              padding-top: 3px;
+            }
+          }
+        }
+      }
+    }
+    ul ul {
+      display: none;
+      li {
+        background: $grp-blue-dark;
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 0;
+        border-bottom: border solid #333333;
+        a {
+          font-size: .7em;
+          padding-top: 13px;
+          padding-bottom: 13px;
+          color: #aeb2b7;
+        }
       }
     }
   }

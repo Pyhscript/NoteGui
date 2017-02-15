@@ -14,7 +14,49 @@
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/cookies.js"></script>
     <script>if (window.module) module = window.module;</script>
+    <aside class="sidebar">
+  <div id="leftside-navigation" class="nano">
+    <ul class="nano-content">
 
+      <li class="sub-menu">
+        <a href="javascript:void(0)"><i class="fa fa-user-circle"></i><span>Account</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+        <ul>
+          <li><a href="login.html">Sign in</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="account.html">Manage</a></li>
+          <li><a href="#">Sign out</a></li>
+        </ul>
+      </li>
+
+      <li class="sub-menu">
+        <a href="javascript:void(0);"><i class="fa fa-file-text-o"></i><span>Notes</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+        <ul>
+          <li><a href="#">View</a>
+          </li>
+          <li><a href="#">Create</a>
+          </li>
+          <li><a href="#">List</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="sub-menu">
+        <a href="javascript:void(0);"><i class="fa fa-envelope"></i><span>Messages</span><i class="arrow fa fa-angle-right pull-right"></i></a>
+        <ul>
+          <li><a href="#inbox">Inbox</a>
+          </li>
+          <li><a href="#send">Compose</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="upcoming.html"><i class="fa fa-flag"></i><span>Upcoming CTF's</span></a>
+      </li>
+
+    </ul>
+  </div>
+</aside>
         <section class="login">
           <div class="login-header">
             <div class="login-logo">
@@ -32,8 +74,14 @@
             <a href="register.html"><button type="button">Register</button></a>
           </form>
         </section>
+
   </body>
   <script>
+  $("#leftside-navigation .sub-menu > a").click(function(e) {
+    $("#leftside-navigation ul ul").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
+    e.stopPropagation()
+  })
+
     const API = new APISync();
     const JAR = new CookieJar();
 

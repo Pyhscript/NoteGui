@@ -2,8 +2,10 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>NoteGUI - Drink the booze, hack the things!</title>
+    <title>Upcomming CTF Events</title>
     <link rel="stylesheet" href="assets/css/style.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
@@ -12,7 +14,6 @@
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/cookies.js"></script>
     <script>if (window.module) module = window.module;</script>
-
     <aside class="sidebar">
   <div id="leftside-navigation" class="nano">
     <ul class="nano-content">
@@ -50,37 +51,76 @@
       </li>
 
       <li>
-        <a href="upcoming.html"><i class="fa fa-flag"></i><span>Upcoming CTF's</span></a>
-      </li>
-
-      <li>
-        <a href="index.html"><i class="fa fa-flag"></i><span>Home</span></a>
+        <a href="index.html"><i class="fa fa-home"></i><span>Home</span></a>
       </li>
 
     </ul>
   </div>
 </aside>
+
+<section style="width:60%;margin-left: 30%; border-bottom: none; border-top: none">
+  <div class="login-header">
+    <div class="login-logo">
+      <i class="fa fa-flag fa-3x"></i>
+    </div>
+  </div>
+    <button type="buton" onclick="getCTFList()">Find CTF's</button>
+    <div id="ctf-info" style="
+    font-size:.8em;
+    max-height: 550px;
+    overflow:scroll;
+    overflow-x:hidden;
+    margin-top:15px;
+    "></div>
+</section>
+
   </body>
-
-
   <script>
   $("#leftside-navigation .sub-menu > a").click(function(e) {
     $("#leftside-navigation ul ul").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
     e.stopPropagation()
   })
 
-    const API = new APISync();
+function getCTFList() {
+  var host = 'https://ctftime.org/api/v1/events/';
+  var _limit = '?limit=100';
+  var _start = '&start=1422019499';
+  var _finish = '&finish=1423029499';
 
-    function login() {
-      API.login("admin", "mysecretpwd");
+  $.ajax({
+    url:      host,
+    method:   "GET",
+    dataType: "JSON",
+    data: {
+      limit: _limit,
+      start: _start,
+      finish: _finish,
     }
+  }).done(function(res) {
+    for(var x = 0; x < res.length; x++) {
+      obj = res[x];
+      title = obj.title;
+      desc  = obj.description;
+      ctftime_url = obj.ctftime_url;
+      format = obj.format;
+      logo = obj.logo;
+      url  = obj.url;
+      start = obj.start;
+      finish = obj.finish;
 
-    function register() {
-      API.register('foo', 'bar', 'bar', 'CTF-USER');
-    }
+      info = '<h3>' + title + ': ' + start + ' - ' + finish + '</h3>: ' + desc + '<br>' +
+             '<a href="' + ctftime_url + '">CTF TIME</a> : ' + format + '<br>' +
+             '<a href="' + url + '">Go!</a><br><div id="divider"></div><br>';
 
-    function logout() {
-      API.logout();
+      if(logo) {
+        info = '<img src="' + logo + '" alt="logo" width="150px" height="150px"/><br>' + info;
+      }
+      $('#ctf-info').append(info)
+      //alert(obj.title);
     }
+    console.log(res);
+  });
+}
+
   </script>
 </html>
