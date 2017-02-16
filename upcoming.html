@@ -115,6 +115,28 @@ function getCTFList() {
       if(logo) {
         info = '<img src="' + logo + '" alt="logo" width="150px" height="150px"/><br>' + info;
       }
+      const notifier = require('electron-notifications');
+      const notification = notifier.notify('New CTF', {
+        message: title + '<a href="' + url + '"> More Information</a><br>Starts: ' + start + '<br>Style: ' + format + '<br>' + desc,
+        icon: logo,
+        duration: 10000,
+        vertical: true,
+        buttons: ['Dismiss', 'More'],
+      });
+
+      notification.on('buttonClicked', (text) => {
+        if (text === 'Dismiss') {
+          notification.close();
+        } else if (text === 'More') {
+          const {BrowserWindow} = require('electron').remote
+          let win = new BrowserWindow({width: 800, height: 600, backgroundColor: '#faf'})
+            win.on('closed', () => {
+            win = null
+          })
+          win.loadURL(url);
+        }
+      });
+
       $('#ctf-info').append(info)
       //alert(obj.title);
     }
